@@ -1,31 +1,27 @@
-转自![YEDDA Logo](https://github.com/jiesutd/YEDDA/blob/master/YEDDAlogo.png) ，很好用的自动标注语料工具
+转自[YEDDA Logo](https://github.com/jiesutd/YEDDA/blob/master/YEDDAlogo.png) ，很好用的自动标注语料工具
 
 --------------------------------------------------------------------------------
-
 
 YEDDA: A Lightweight Collaborative Text Span Annotation Tool
 ====
 
 About:
 ====
+
 YEDDA (the previous SUTDAnnotator) is developed for annotating chunk/entity/event on text (almost all languages including English, Chinese), symbol and even emoji. It supports shortcut annotation which is extremely efficient to annotate text by hand. The user only need to select text span and press shortcut key, the span will be annotated automatically. It also support command annotation model which annotates multiple entities in batch and support export annotated text into sequence text. Besides, intelligent recommendation and adminstrator analysis is also included in updated version. It is compatiable with all mainstream operating systems includings Windows, Linux and MacOS. 
 
-For more details, please refer to [our paper (ACL2018:demo, best demo nomination)](https://arxiv.org/pdf/1711.03759.pdf).
 
-This GUI annotation tool is developed with tkinter package in Python. 
+无需安装任何外部环境！
 
-System required: Python 2.7
+支持python2，（改改也能用在python3上，英文没问题，中文标注不了，搞了好久不知道怎么解决）
 
-Author: [Jie Yang](https://jiesutd.github.io), Phd Candidate of SUTD.
+生成两个文件：.ann是标注后的原文，.anns是生成的标注语料，支持BIO和BMES两种格式
 
-Interface:
-====
-It provides both annotator interface for efficient annotatation and admin interface for result analysis.
-* Annotator Interface:
- ![alt text](EnglishInterface.png "English Interface demo")
- ![alt text](ChineseInterface.png "Chinese Interface demo")
-* Administrator Interface:
- ![alt text](AdminInterface.png "Administrator Interface demo")
+YEDDA的论文：(https://arxiv.org/pdf/1711.03759.pdf).
+
+感谢大佬提供的开源代码: [Jie Yang](https://jiesutd.github.io), Phd Candidate of SUTD.
+
+
 
 Use as an annotator ?
 ====
