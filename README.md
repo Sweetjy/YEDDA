@@ -1,4 +1,4 @@
-转自[YEDDA Logo](https://github.com/jiesutd/YEDDA/blob/master/YEDDAlogo.png) ，很好用的自动标注语料工具
+转自[YEDDA Logo](https://github.com/jiesutd/YEDDA/blob/master/YEDDAlogo.png) ，很好用的自动标注语料工具，（对YEDDA程序稍加修改，已跑通）
 
 --------------------------------------------------------------------------------
 
