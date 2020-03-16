@@ -53,8 +53,8 @@ class Example(Frame):
             self.textRow = len(self.pressCommand)
         else:
             self.textRow = 20
-        self.textColumn = 5
-        self.tagScheme = "BMES"
+        self.textColumn = 20
+        self.tagScheme = "BIO"
         self.onlyNP = False  ## for exporting sequence 
         self.keepRecommend = True
 
@@ -64,7 +64,7 @@ class Example(Frame):
         for example, if your data is segmentated Chinese (or English) with words seperated by a space, you need to set this flag as true
         if your data is Chinese without segmentation, you need to set this flag as False
         '''
-        self.seged = True  ## False for non-segmentated Chinese, True for English or Segmented Chinese
+        self.seged = False  ## False for non-segmentated Chinese, True for English or Segmented Chinese
         self.configFile = "configs/default.config"
         self.entityRe = r'\[\@.*?\#.*?\*\](?!\#)'
         self.insideNestEntityRe = r'\[\@\[\@(?!\[\@).*?\#.*?\*\]\#'
@@ -96,9 +96,9 @@ class Example(Frame):
 
         self.lbl = Label(self, text="File: no file is opened")
         self.lbl.grid(sticky=W, pady=4, padx=5)
-        self.fnt = tkFont.Font(family=self.textFontStyle,size=self.textRow,weight="bold",underline=0)
+        self.fnt = tkFont.Font(family=self.textFontStyle,size=self.textRow,underline=0)
         self.text = Text(self, font=self.fnt, selectbackground=self.selectColor)
-        self.text.grid(row=1, column=0, columnspan=self.textColumn, rowspan=self.textRow, padx=12, sticky=E+W+S+N)
+        self.text.grid(row=1, column=0, columnspan=self.textColumn, rowspan=self.textRow, padx=9, sticky=E+W+S+N)
 
         self.sb = Scrollbar(self)
         self.sb.grid(row = 1, column = self.textColumn, rowspan = self.textRow, padx=0, sticky = E+W+S+N)
@@ -795,7 +795,7 @@ def getConfigList():
     filteredFileNames = sorted(filter(lambda x: (not x.startswith(".")) and (x.endswith(".config")), fileNames))
     return list(filteredFileNames)
 
-def getWordTagPairs(tagedSentence, seged=True, tagScheme="BMES", onlyNP=False, entityRe=r'\[\@.*?\#.*?\*\]'):
+def getWordTagPairs(tagedSentence, seged=True, tagScheme="BIO", onlyNP=False, entityRe=r'\[\@.*?\#.*?\*\]'):
     newSent = tagedSentence.strip('\n').decode('utf-8')
     filterList = re.findall(entityRe, newSent)
     newSentLength = len(newSent)
@@ -851,7 +851,7 @@ def getWordTagPairs(tagedSentence, seged=True, tagScheme="BMES", onlyNP=False, e
     return turnFullListToOutputPair(full_list, seged, tagScheme, onlyNP)
 
 
-def turnFullListToOutputPair(fullList, seged=True, tagScheme="BMES", onlyNP=False):
+def turnFullListToOutputPair(fullList, seged=True, tagScheme="BIO", onlyNP=False):
     pairList = []
     for eachList in fullList:
         if eachList[3]:
@@ -878,7 +878,7 @@ def turnFullListToOutputPair(fullList, seged=True, tagScheme="BMES", onlyNP=Fals
     return pairList
 
 
-def outputWithTagScheme(input_list, label, tagScheme="BMES"):
+def outputWithTagScheme(input_list, label, tagScheme="BIO"):
     output_list = []
     list_length = len(input_list)
     if tagScheme=="BMES":
@@ -942,7 +942,7 @@ def main():
     print("SUTDAnnotator launched!")
     print(("OS:%s")%(platform.system()))
     root = Tk()
-    root.geometry("1300x700+200+200")
+    root.geometry("1200x700")
     app = Example(root)
     app.setFont(17)
     root.mainloop()
